@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puri Magic - The Art of Pani Puri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #FF5733;
+            --secondary: #FFD700;
+            --dark: #000000;
+            --light: #FFF8E1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #111;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 87, 51, 0.3);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        /* Equipment Section */
+        .equipment {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .equipment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-stripes.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title h2 {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .equipment-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .category-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            width: 350px;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .category-card h3 {
+            color: var(--secondary);
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .category-card ul {
+            list-style: none;
+        }
+        
+        .category-card li {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 215, 0, 0.2);
+        }
+        
+        .quantity {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background: var(--dark);
+            padding: 80px 0;
+        }
+        
+        .gallery-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            height: 500px;
+        }
+        
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 30px;
+            color: white;
+        }
+        
+        .slide-caption h3 {
+            color: var(--secondary);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+            padding: 0 20px;
+        }
+        
+        .gallery-control {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-control:hover {
+            background: var(--primary);
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+        
+        /* Raw Materials Section */
+        .materials {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            padding: 80px 0;
+        }
+        
+        .material-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid var(--secondary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .material-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary);
+        }
+        
+        .material-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .material-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .material-card:hover .material-img img {
+            transform: scale(1.1);
+        }
+        
+        .material-info {
+            padding: 20px;
+        }
+        
+        .material-info h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .material-info p {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .material-quantity {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 60px;
+            }
+            
+            .category-card {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .gallery-container {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .category-card {
+                width: 100%;
+            }
+            
+            .gallery-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo" style="width:24px; height:24px;">
+
+                    <span>Puri Magic</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#equipment">Equipment</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#materials">Materials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>The Art of Pani Puri</h1>
+            <p>Discover the perfect blend of crispy puris, flavorful pani, and mouth-watering fillings. Explore professional equipment, authentic recipes, and everything you need to master this beloved street food.</p>
+            <a href="#equipment" class="btn">Explore Equipment</a>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section class="equipment" id="equipment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Equipment</h2>
+                <p>High-quality tools and equipment to set up your perfect pani puri station</p>
+            </div>
+            
+            <div class="equipment-categories">
+                <!-- Branding Equipment -->
+                <div class="category-card">
+                    <h3>Branding Equipment</h3>
+                    <ul>
+                        <li>Backlight board <span class="quantity">4</span></li>
+                        <li>Photo Frames <span class="quantity">5</span></li>
+                        <li>Logos <span class="quantity">6</span></li>
+                        <li>Branding T-Shirts <span class="quantity">2</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Steel & Plastic Items -->
+                <div class="category-card">
+                    <h3>Steel & Plastic Items</h3>
+                    <ul>
+                        <li>Burners Gas Stove <span class="quantity">2</span></li>
+                        <li>Chat tawa <span class="quantity">1</span></li>
+                        <li>Plastic Container with Tap <span class="quantity">1</span></li>
+                        <li>Aloo Round Container <span class="quantity">1</span></li>
+                        <li>Knife Set <span class="quantity">8</span></li>
+                        <li>Chopping Board <span class="quantity">1</span></li>
+                        <li>Small Round Boxes <span class="quantity">6</span></li>
+                        <li>Round Masala Boxes <span class="quantity">3</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Additional Items -->
+                <div class="category-card">
+                    <h3>Additional Items</h3>
+                    <ul>
+                        <li>Spoons <span class="quantity">2</span></li>
+                        <li>Large Containers <span class="quantity">2</span></li>
+                        <li>Aloo Smasher <span class="quantity">1</span></li>
+                        <li>Disposable Plates <span class="quantity">1 Set</span></li>
+                        <li>Parcel Covers <span class="quantity">1 Set</span></li>
+                        <li>Dustbins <span class="quantity">2</span></li>
+                        <li>Pani Puri Storage Box <span class="quantity">1</span></li>
+                        <li>Measurement Cups <span class="quantity">3 Sets</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pani Puri Gallery</h2>
+                <p>Explore the visual journey of perfect pani puri preparation</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-slider">
+                    <div class="gallery-slide">
+                        <img src="img/gallary-6.jpeg" alt="Pani Puri">
+                        <div class="slide-caption">
+                            <h3>Classic Pani Puri</h3>
+                            <p>The traditional preparation with mint-coriander water</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="img/gallary-7.jpeg" alt="Pani Puri Ingredients">
+                        <div class="slide-caption">
+                            <h3>Fresh Ingredients</h3>
+                            <p>Only the freshest components make the perfect pani puri</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="img/gallary-8.jpeg" alt="Pani Puri Stall">
+                        <div class="slide-caption">
+                            <h3>Professional Setup</h3>
+                            <p>Proper equipment arrangement for efficient service</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="img/gallary-9.jpeg" alt="Pani Puri Making">
+                        <div class="slide-caption">
+                            <h3>Art of Preparation</h3>
+                            <p>Skillful hands creating the perfect bite-sized delight</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-controls">
+                    <button class="gallery-control prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="gallery-control next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="gallery-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Raw Materials Section -->
+    <section class="materials" id="materials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Raw Materials</h2>
+                <p>Premium quality ingredients for authentic pani puri experience</p>
+            </div>
+            
+            <div class="material-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="spices">Spices</button>
+                <button class="filter-btn" data-filter="sauces">Sauces</button>
+                <button class="filter-btn" data-filter="packaging">Packaging</button>
+            </div>
+            
+            <div class="material-grid">
+                <!-- Spices -->
+                <div class="material-card" data-category="spices">
+                    <div class="material-img">
+                        <img src="img/pani-puri-masala.jpg" alt="Pani Puri Masala">
+                    </div>
+                    <div class="material-info">
+                        <h3>Pani Puri Masala</h3>
+                        <p>The secret blend of spices for authentic flavor</p>
+                        <span class="material-quantity">1 Packet</span>
+                    </div>
+                </div>
+                
+                <div class="material-card" data-category="spices">
+                    <div class="material-img">
+                        <img src="img/black-salt.jpg" alt="Black Salt">
+                    </div>
+                    <div class="material-info">
+                        <h3>Black Salt</h3>
+                        <p>Essential for that distinctive tangy taste</p>
+                        <span class="material-quantity">1 Packet Small</span>
+                    </div>
+                </div>
+                
+                <!-- Sauces -->
+                <div class="material-card" data-category="sauces">
+                    <div class="material-img">
+                        <img src="img/chocolate-sauce.jpg" alt="Chocolate Sauce">
+                    </div>
+                    <div class="material-info">
+                        <h3>Chocolate Sauce</h3>
+                        <p>For innovative dessert-style pani puri</p>
+                        <span class="material-quantity">1 Bottle</span>
+                    </div>
+                </div>
+                
+                <div class="material-card" data-category="sauces">
+                    <div class="material-img">
+                        <img src="img/mango-crush.jpg" alt="Mango Crush">
+                    </div>
+                    <div class="material-info">
+                        <h3>Mango Crush</h3>
+                        <p>Sweet and tangy mango flavor addition</p>
+                        <span class="material-quantity">1 Bottle</span>
+                    </div>
+                </div>
+                
+                <!-- Packaging -->
+                <div class="material-card" data-category="packaging">
+                    <div class="material-img">
+                        <img src="img/parcel-covers.jpg" alt="Parcel Covers">
+                    </div>
+                    <div class="material-info">
+                        <h3>Parcel Covers</h3>
+                        <p>Eco-friendly packaging for takeaway</p>
+                        <span class="material-quantity">1 Set</span>
+                    </div>
+                </div>
+                
+                <div class="material-card" data-category="packaging">
+                    <div class="material-img">
+                        <img src="img/disposable-plates.jpg" alt="Disposable Plates">
+                    </div>
+                    <div class="material-info">
+                        <h3>Disposable Plates</h3>
+                        <p>Convenient and hygienic serving option</p>
+                        <span class="material-quantity">1 Set</span>
+                    </div>
+                </div>
+                
+                <!-- Additional Materials -->
+                <div class="material-card" data-category="spices">
+                    <div class="material-img">
+                        <img src="img/chaat-masala.jpg" alt="Chaat Masala">
+                    </div>
+                    <div class="material-info">
+                        <h3>Chaat Masala</h3>
+                        <p>Tangy spice mix for extra flavor</p>
+                        <span class="material-quantity">1 Packet</span>
+                    </div>
+                </div>
+                
+                <div class="material-card" data-category="spices">
+                    <div class="material-img">
+                        <img src="img/sev-packet.jpg" alt="Sev Packet">
+                    </div>
+                    <div class="material-info">
+                        <h3>Sev Packet</h3>
+                        <p>Crispy gram flour noodles for topping</p>
+                        <span class="material-quantity">1 Box</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Puri Magic</h3>
+                    <p>Mastering the art of perfect pani puri with premium equipment and authentic ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#equipment">Equipment</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#materials">Materials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Street, Food City</li>
+                        <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@purimagic.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Puri Magic. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Gallery Slider
+        const slider = document.querySelector('.gallery-slider');
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Auto slide change
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        function goToSlide(n) {
+            slider.style.transform = `translateX(-${n * 100}%)`;
+            currentSlide = n;
+            updateDots();
+            
+            // Reset auto slide timer
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // Material Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const materialCards = document.querySelectorAll('.material-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                materialCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
