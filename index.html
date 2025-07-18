@@ -6,6 +6,7 @@
     <title>Vintage Pani Puri Menu - Puri Magic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         :root {
             --primary: #FF5733;
@@ -13,9 +14,11 @@
             --dark: #000000;
             --light: #FFF8E1;
             --vintage: #8B4513;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --info: #17a2b8;
         }
 
-        
         * {
             margin: 0;
             padding: 0;
@@ -27,73 +30,74 @@
             color: white;
             font-family: 'Oswald', sans-serif;
         }
+        
         .copyright {
-    background: var(--dark);
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 215, 0, 0.2);
-}
+            background: var(--dark);
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
 
-.copyright-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+        .copyright-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-.copyright p {
-    color: #777;
-    font-size: 14px;
-    margin: 0;
-}
+        .copyright p {
+            color: #777;
+            font-size: 14px;
+            margin: 0;
+        }
 
-.developer-credit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+        .developer-credit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.developer-credit span {
-    color: #777;
-    font-size: 12px;
-}
+        .developer-credit span {
+            color: #777;
+            font-size: 12px;
+        }
 
-.developer-link {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+        .developer-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-.developer-logo {
-    height: 18px;
-    width: auto;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
+        .developer-logo {
+            height: 18px;
+            width: auto;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
 
-.developer-link span {
-    color: var(--secondary);
-    font-size: 14px;
-    font-weight: 600;
-}
+        .developer-link span {
+            color: var(--secondary);
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-.developer-link:hover {
-    opacity: 1;
-}
+        .developer-link:hover {
+            opacity: 1;
+        }
 
-.developer-link:hover .developer-logo {
-    opacity: 1;
-    transform: scale(1.05);
-}
+        .developer-link:hover .developer-logo {
+            opacity: 1;
+            transform: scale(1.05);
+        }
 
-@media (max-width: 576px) {
-    .copyright-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
+        @media (max-width: 576px) {
+            .copyright-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
         
         .container {
             max-width: 1200px;
@@ -150,6 +154,9 @@
             text-transform: uppercase;
             font-size: 14px;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .nav-links a:hover {
@@ -180,7 +187,7 @@
         /* Hero Section */
         .hero {
             height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1371&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://vintagepanipuri.gantasolutions.com/img/pani-puri.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
@@ -303,6 +310,7 @@
             padding: 15px;
             border-bottom: 1px solid rgba(255, 215, 0, 0.1);
             font-size: 16px;
+            position: relative;
         }
         
         .menu-table tr:last-child td {
@@ -316,10 +324,60 @@
         .price {
             color: var(--secondary);
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .hindi-price {
             font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        /* Badges for special items */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .badge-popular {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-new {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .badge-spicy {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+        
+        .badge-veg, .badge-nonveg {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            font-size: 10px;
+        }
+        
+        .badge-veg {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .badge-nonveg {
+            background-color: var(--primary);
+            color: white;
         }
         
         /* Gallery Section */
@@ -460,6 +518,9 @@
         
         .footer-column li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-column a {
@@ -502,6 +563,39 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #777;
             font-size: 14px;
+        }
+        
+        /* Mandatory Info Section */
+        .mandatory-info {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .mandatory-info h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mandatory-info ul {
+            list-style: none;
+        }
+        
+        .mandatory-info li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .mandatory-info i {
+            color: var(--secondary);
+            margin-top: 3px;
         }
         
         /* Responsive Styles */
@@ -585,6 +679,15 @@
                 overflow-x: auto;
             }
         }
+
+        /* Material Icons */
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
     </style>
 </head>
 <body>
@@ -594,14 +697,14 @@
             <nav>
                 <div class="logo">
                     <img src="img/logo.png" alt="Logo" style="width:44px; height:44px;">
-                    <span></span>
+                    <span>Puri Magic</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#menu" class="active">Vintage Menu</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="francage.html">Francage</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#menu" class="active"><i class="fas fa-utensils"></i> Vintage Menu</a></li>
+                    <li><a href="#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                    <li><a href="francage.html"><i class="fas fa-store"></i> Francage</a></li>
                 </ul>
                 <div class="menu-toggle">
                     <i class="fas fa-bars"></i>
@@ -615,11 +718,15 @@
         <div class="hero-content">
             <h1>VINTAGE PANI PURI </h1>
             <p>Authentic flavors at classic prices</p>
+            <div style="margin-top: 30px;">
+                <span class="badge badge-popular"><i class="fas fa-fire"></i> SINCE 1985</span>
+                <span class="badge badge-new"><i class="fas fa-certificate"></i> FAMOUS RECIPES</span>
+            </div>
         </div>
     </section>
 
     <!-- Vintage Menu Section -->
-    <section class="vintage-menu">
+    <section class="vintage-menu" id="menu">
         <div class="container menu-container">
             <div class="section-title">
                 <h2>Our Vintage Specialties</h2>
@@ -642,19 +749,40 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Chocolate Pani Puri</td>
+                            <td>
+                                Chocolate Pani Puri 
+                                <span class="badge badge-popular">BESTSELLER</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
                             <td>6 Pieces</td>
-                            <td class="price">₹2.50 <span class="hindi-price">
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>2.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Mango Pani Puri</td>
+                            <td>
+                                Mango Pani Puri 
+                                <span class="badge badge-new">SEASONAL</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
                             <td>6 Pieces</td>
-                            <td class="price">₹0.50 <span class="hindi-price">
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>0.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Rasmalai Pani Puri</td>
+                            <td>
+                                Rasmalai Pani Puri 
+                                <span class="badge badge-spicy">SWEET</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
                             <td>6 Pieces</td>
-                            <td class="price">₹0.50 <span class="hindi-price">
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>0.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -675,19 +803,70 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Aloo Chaat</td>
-                            <td class="price">₹0.50 <span class="hindi-price">
+                            <td>
+                                Aloo Chaat 
+                                <span class="badge badge-spicy">SPICY</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>0.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Samosa Chaat</td>
-                            <td class="price">₹0.50 <span class="hindi-price">
+                            <td>
+                                Samosa Chaat 
+                                <span class="badge badge-popular">TRADITIONAL</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>0.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Vintage Spl Chaat (Papad)</td>
-                            <td class="price">₹0.50 <span class="hindi-price">
+                            <td>
+                                Vintage Spl Chaat (Papad) 
+                                <span class="badge badge-new">SPECIAL</span>
+                                <span class="badge-veg"><i class="fas fa-leaf"></i></span>
+                            </td>
+                            <td class="price">
+                                <i class="fas fa-rupee-sign"></i>0.50 
+                                <span class="hindi-price"></span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Mandatory Information Section -->
+            <div class="mandatory-info">
+                <h3>
+                    <span class="material-symbols-outlined">info</span>
+                    Important Information
+                </h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        All prices inclusive of GST as applicable
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        Service hours: 10:00 AM to 10:00 PM daily
+                    </li>
+                    <li>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Food may contain allergens - consult staff for details
+                    </li>
+                    <li>
+                        <i class="fas fa-leaf"></i>
+                        Green dot indicates vegetarian items
+                    </li>
+                    <li>
+                        <i class="fas fa-percentage"></i>
+                        Additional charges may apply for extra toppings
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -732,6 +911,15 @@
                     </div>
                 </div>
                 
+                <div class="gallery-controls">
+                    <button class="gallery-control prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-control next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
             
             <div class="gallery-dots">
                 <div class="dot active"></div>
@@ -743,7 +931,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -760,10 +948,10 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="menu.html">Vintage Menu</a></li>
-                        <li><a href="reviews.html">Customer Reviews</a></li>
-                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="menu.html"><i class="fas fa-utensils"></i> Vintage Menu</a></li>
+                        <li><a href="reviews.html"><i class="fas fa-star"></i> Customer Reviews</a></li>
+                        <li><a href="index.html#contact"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
                     </ul>
                 </div>
                 
@@ -771,26 +959,27 @@
                     <h3>Visit Us</h3>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> 123 Vintage Street, Food City</li>
-                        <li><i class="fas fa-phone"></i> +91  90590 54588</li>
+                        <li><i class="fas fa-phone"></i> +91 90590 54588</li>
                         <li><i class="fas fa-clock"></i> 10:00 AM - 10:00 PM Daily</li>
+                        <li><i class="fas fa-envelope"></i> info@purimagic.com</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-    <div class="container">
-        <div class="copyright-content">
-            <p>&copy; 2025  Vintage pani Puri . All Rights Reserved.</p>
-            <div class="developer-credit">
-                <span>Developed by</span>
-                <a href="https://gantasolutions.com" target="_blank" class="developer-link">
-                    <img src="https://gantasolutions.com/gantasolutions.png" alt="Ganta Solutions" class="developer-logo">
-                    <span>Ganta Solutions</span>
-                </a>
+                <div class="container">
+                    <div class="copyright-content">
+                        <p>&copy; 2025 Vintage Pani Puri. All Rights Reserved.</p>
+                        <div class="developer-credit">
+                            <span>Developed by</span>
+                            <a href="https://gantasolutions.com" target="_blank" class="developer-link">
+                                <img src="https://gantasolutions.com/gantasolutions.png" alt="Ganta Solutions" class="developer-logo">
+                                <span>Ganta Solutions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
         </div>
     </footer>
 
